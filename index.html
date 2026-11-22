@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tesfanesh Teshome — Software Engineer & Security Learner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F3EE;--surface:#FFFFFF;--ink:#0B0E13;--muted:#5A6270;--line:#D9D8D0;
+  --accent:#C8F031;--accent-text:#4A6300;--on-accent:#0B0E13;--glow2:#3DD6C6;
+  color-scheme:light;box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0E13;--surface:#131822;--ink:#EEF1F5;--muted:#98A2B0;--line:#232B38;--accent-text:#C8F031;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B0E13;--surface:#131822;--ink:#EEF1F5;--muted:#98A2B0;--line:#232B38;--accent-text:#C8F031;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:90px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "DM Sans",system-ui,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent-text);outline-offset:3px}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;margin:0;line-height:1.02;letter-spacing:-.02em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;position:relative}
+.mono{font-family:"JetBrains Mono",monospace}
+
+/* background glow */
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.35;pointer-events:none;z-index:-1}
+.b1{width:420px;height:420px;background:var(--accent);top:-80px;right:-60px;animation:float 14s ease-in-out infinite}
+.b2{width:340px;height:340px;background:var(--glow2);top:260px;left:-120px;opacity:.22;animation:float 18s ease-in-out infinite reverse}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,50px)}}
+
+/* nav */
+nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);z-index:40;display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:12px;padding:10px 12px 10px 22px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--surface) 80%,transparent);backdrop-filter:blur(14px)}
+nav b{font:700 17px "Bricolage Grotesque",sans-serif}
+nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0}
+nav li a{display:block;padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--muted);font-size:15px;transition:.2s}
+nav li a:hover{color:var(--ink);background:var(--line)}
+nav .cta{background:var(--accent);color:var(--on-accent);font-weight:500}
+nav .cta:hover{background:var(--accent);color:var(--on-accent);transform:scale(1.04)}
+
+/* hero */
+.hero{padding:96px 0 72px}
+.status{display:inline-flex;gap:10px;align-items:center;padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:14px;color:var(--muted);background:var(--surface)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent-text);animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent-text) 60%,transparent)}100%{box-shadow:0 0 0 12px transparent}}
+h1{font-size:clamp(44px,9vw,112px);font-weight:800;margin:28px 0 24px;letter-spacing:-.035em}
+h1 em{font-style:normal;display:block;color:var(--accent-text)}
+#word{display:inline-block}
+#word.swap{animation:rise .55s cubic-bezier(.2,.8,.2,1)}
+@keyframes rise{from{opacity:0;transform:translateY(.4em)}to{opacity:1;transform:none}}
+.hero p{max-width:56ch;font-size:19px;color:var(--muted);margin:0 0 34px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:999px;text-decoration:none;font-weight:500;margin:0 10px 10px 0;transition:transform .2s,box-shadow .2s}
+.btn.p{background:var(--accent);color:var(--on-accent)}
+.btn.s{border:1.5px solid var(--ink)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 24px -10px var(--accent-text)}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding:18px 0;white-space:nowrap}
+.track{display:inline-flex;gap:14px;animation:slide 30s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.track span{font:500 15px "JetBrains Mono",monospace;padding:8px 18px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+
+section{padding:96px 0 0}
+.label{font:500 13px "JetBrains Mono",monospace;color:var(--accent-text);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px}
+h2{font-size:clamp(32px,5vw,56px);font-weight:700;margin-bottom:40px;max-width:18ch}
+
+/* path */
+.path{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.step{padding:24px;border:1px solid var(--line);border-radius:20px;background:var(--surface)}
+.step small{font:400 13px "JetBrains Mono",monospace;color:var(--muted)}
+.step h3{font-size:22px;margin:10px 0 6px}.step p{margin:0;color:var(--muted);font-size:15px}
+
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.card{--mx:50%;--my:50%;position:relative;grid-column:span 3;padding:28px;border:1px solid var(--line);border-radius:24px;background:var(--surface);overflow:hidden;display:flex;flex-direction:column;gap:14px;text-decoration:none;transition:transform .3s,border-color .3s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(320px circle at var(--mx) var(--my),color-mix(in srgb,var(--accent) 28%,transparent),transparent 70%);opacity:0;transition:opacity .3s}
+.card:hover{transform:translateY(-6px);border-color:var(--accent-text)}
+.card:hover::before{opacity:1}
+.card>*{position:relative}
+.card.big{grid-column:span 4}.card.sm{grid-column:span 2}
+.card h3{font-size:clamp(24px,3vw,32px)}
+.card p{margin:0;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+.chips span{font:400 13px "JetBrains Mono",monospace;padding:5px 12px;border-radius:999px;background:var(--bg);border:1px solid var(--line)}
+.chips .hl{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.arrow{position:absolute!important;top:24px;right:26px;font-size:22px;transition:transform .3s}
+.card:hover .arrow{transform:translate(4px,-4px)}
+
+/* skills */
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.box{padding:28px;border:1px solid var(--line);border-radius:24px;background:var(--surface)}
+.box h3{font-size:26px;margin-bottom:18px}
+.box .chips{margin:0;padding:0}
+
+/* contact */
+.contact h2{max-width:14ch}
+.links{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.link{padding:26px;border-radius:24px;background:var(--ink);color:var(--bg);text-decoration:none;transition:transform .25s,background .25s,color .25s;display:block;word-break:break-word}
+.link small{display:block;font:400 13px "JetBrains Mono",monospace;opacity:.7;margin-bottom:8px}
+.link b{font:700 20px "Bricolage Grotesque",sans-serif}
+.link:hover{transform:translateY(-6px) rotate(-1deg);background:var(--accent);color:var(--on-accent)}
+footer{padding:72px 0 48px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* reveal */
+html.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+html.js .reveal.in{opacity:1;transform:none}
+
+@media (max-width:820px){
+  .path,.skills,.links{grid-template-columns:1fr}
+  .card,.card.big,.card.sm{grid-column:span 6}
+  nav ul li:not(:last-child){display:none}
+  .hero{padding-top:64px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  html.js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="blob b1"></div><div class="blob b2"></div>
+
+<nav>
+  <b>Tesfanesh Teshome</b>
+  <ul>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact" class="cta">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <span class="status"><span class="dot"></span>Open to opportunities · Ethiopia</span>
+  <h1>I build<em><span id="word">secure systems.</span></em></h1>
+  <p>Software engineering student at Arba Minch University and cybersecurity trainee at GeezTech. I work across development and security, from web apps to PKI and security tools.</p>
+  <a class="btn p" href="#projects">View projects ↓</a><a class="btn s" href="#contact">Contact me</a>
+</header>
+</div>
+
+<div class="marquee" aria-label="Technologies">
+  <div class="track">
+    <span>Python</span><span>Java</span><span>JavaScript</span><span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Spring Boot</span><span>PKI</span><span>Key management</span><span>Security testing</span><span>Git</span>
+    <span aria-hidden="true">Python</span><span aria-hidden="true">Java</span><span aria-hidden="true">JavaScript</span><span aria-hidden="true">React</span><span aria-hidden="true">Node.js</span><span aria-hidden="true">Express</span><span aria-hidden="true">MongoDB</span><span aria-hidden="true">Spring Boot</span><span aria-hidden="true">PKI</span><span aria-hidden="true">Key management</span><span aria-hidden="true">Security testing</span><span aria-hidden="true">Git</span>
+  </div>
+</div>
+
+<div class="wrap">
+<section>
+  <div class="label reveal">Background</div>
+  <h2 class="reveal">Development and security, side by side.</h2>
+  <div class="path">
+    <div class="step reveal"><small>Studying</small><h3>Arba Minch University</h3><p>Software engineering: building full-stack web applications.</p></div>
+    <div class="step reveal" style="--d:.1s"><small>Training</small><h3>GeezTech</h3><p>Cybersecurity course focused on security testing.</p></div>
+    <div class="step reveal" style="--d:.2s"><small>Internship</small><h3>INSA</h3><p>PKI sub-division: certificates and key infrastructure.</p></div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="label reveal">Projects</div>
+  <h2 class="reveal">Things I’ve built.</h2>
+  <div class="grid">
+    <a class="card big reveal" href="https://github.com/mimi-14/amharic-phishing-shield" target="_blank" rel="noopener">
+      <span class="arrow">↗</span>
+      <h3>Amharic Phishing Shield</h3>
+      <p>Detects phishing messages written in Amharic and English. It has a web interface and a Telegram bot, so anyone can check a suspicious message in seconds.</p>
+      <div class="chips"><span class="hl">Python</span><span>Telegram bot</span><span>Web app</span><span>QR code</span></div>
+    </a>
+    <div class="card sm reveal" style="--d:.1s">
+      <h3>CAAVS</h3>
+      <p>Absence reporting and verification for students, with role-based workflows.</p>
+      <div class="chips"><span class="hl">JavaScript</span><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span></div>
+    </div>
+    <div class="card reveal">
+      <h3>Issuing CA System</h3>
+      <p>A certificate authority with a registration authority, OCSP and CRL revocation, and HSM support.</p>
+      <div class="chips"><span class="hl">Java</span><span>Spring Boot</span><span>React</span><span>PKI</span></div>
+    </div>
+    <div class="card reveal" style="--d:.1s">
+      <h3>Public key certificates and key management</h3>
+      <p>Issuing public key certificates and protecting the keys behind them through their full lifecycle.</p>
+      <div class="chips"><span class="hl">PKI</span><span>Certificates</span><span>Key lifecycle</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="label reveal">Skills</div>
+  <h2 class="reveal">What I work with.</h2>
+  <div class="skills">
+    <div class="box reveal"><h3>Development</h3><div class="chips"><span class="hl">Python</span><span class="hl">Java</span><span class="hl">JavaScript</span><span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Spring Boot</span><span>Git &amp; GitHub</span></div></div>
+    <div class="box reveal" style="--d:.1s"><h3>Security</h3><div class="chips"><span class="hl">PKI</span><span>Certificate authority</span><span>Key management</span><span>OCSP / CRL</span><span>HSM</span><span>Security testing</span></div></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="label reveal">Contact</div>
+  <h2 class="reveal">Let’s build something secure.</h2>
+  <div class="links">
+    <a class="link reveal" href="mailto:teshomemimi36@gmail.com"><small>Email</small><b>teshomemimi36@gmail.com</b></a>
+    <a class="link reveal" style="--d:.1s" href="https://t.me/mimi_8293" target="_blank" rel="noopener"><small>Telegram</small><b>@mimi_8293</b></a>
+    <a class="link reveal" style="--d:.2s" href="tel:+25182415293"><small>Phone</small><b>+251 82 415 293</b></a>
+  </div>
+</section>
+
+<footer><span>© 2026 Tesfanesh Teshome</span><span>Ethiopia</span></footer>
+</div>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});}
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    els.forEach(function(e){io.observe(e)});
+  }
+  var w=document.getElementById('word'),words=['secure systems.','web apps.','security tools.'],i=0;
+  if(w&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setInterval(function(){i=(i+1)%words.length;w.classList.remove('swap');void w.offsetWidth;w.textContent=words[i];w.classList.add('swap')},2800);
+  }
+  document.querySelectorAll('.card').forEach(function(c){
+    c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')});
+  });
+})();
+</script>
+</body>
+</html>
